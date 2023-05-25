@@ -68,7 +68,7 @@ namespace APIEscola.Service.Services
         {
             var resultado = await _repositorio.BuscaAlunoId(aluno.Id);
 
-            return resultado != null ? false : true;
+            return resultado != null ? true : false;
         }
     }
 }
