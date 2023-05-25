@@ -23,7 +23,7 @@ namespace APIEscola.Service.Services
 
             foreach (AlunoModel aluno in resultado)
             {
-                alunos.Add(aluno.MapeiaAlunoDTO());
+                alunos.Add(aluno.MapAlunoDTO());
             }
 
             return alunos;
@@ -32,7 +32,7 @@ namespace APIEscola.Service.Services
         public async Task<AlunoDTO> BuscaAlunoId(int id)
         {
             AlunoModel aluno = await _repositorio.BuscaAlunoId(id);
-            return aluno.MapeiaAlunoDTO();
+            return aluno.MapAlunoDTO();
         }
 
         public async Task<bool> SalvaAluno(AlunoDTO aluno)
@@ -41,7 +41,7 @@ namespace APIEscola.Service.Services
 
             if (!alunoTemCadastro)
             {
-                return await _repositorio.SalvaAluno(aluno.MapeiaAlunoModel());
+                return await _repositorio.SalvaAluno(aluno.MapAlunoModel());
             }
 
             return false;
@@ -53,7 +53,7 @@ namespace APIEscola.Service.Services
 
             if (alunoTemCadastro)
             {
-                return await _repositorio.AtualizaAluno(aluno.MapeiaAlunoModel());
+                return await _repositorio.AtualizaAluno(aluno.MapAlunoModel());
             }
 
             return false;

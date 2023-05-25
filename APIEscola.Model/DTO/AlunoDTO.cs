@@ -9,7 +9,7 @@ namespace APIEscola.Model.DTO
         public string? Usuario { get; set; }
         public string? Senha { get; set; }
 
-        public AlunoModel MapeiaAlunoModel()
+        public AlunoModel MapAlunoModel()
         {
             return new AlunoModel
             {

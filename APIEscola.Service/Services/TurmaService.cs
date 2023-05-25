@@ -22,7 +22,7 @@ namespace APIEscola.Service.Services
 
             foreach (TurmaModel turma in resultado)
             {
-                turmas.Add(turma.MapeiaTurmaDTO());
+                turmas.Add(turma.MapTurmaDTO());
             }
 
             return turmas;
@@ -32,7 +32,7 @@ namespace APIEscola.Service.Services
         {
             TurmaModel turma = await _repositorio.BuscaTurmaId(id);
 
-            return turma.MapeiaTurmaDTO();
+            return turma.MapTurmaDTO();
         }
 
         public async Task<bool> SalvaTurma(TurmaDTO turma)
@@ -41,7 +41,7 @@ namespace APIEscola.Service.Services
 
             if (!turmaTemCadastro)
             {
-                return await _repositorio.SalvaTurma(turma.MapeiaTurmaModel());
+                return await _repositorio.SalvaTurma(turma.MapTurmaModel());
             }
 
             return false;
@@ -53,7 +53,7 @@ namespace APIEscola.Service.Services
 
             if (turmaTemCadastro)
             {
-                return await _repositorio.AtualizaTurma(turma.MapeiaTurmaModel());
+                return await _repositorio.AtualizaTurma(turma.MapTurmaModel());
             }
 
             return false;
