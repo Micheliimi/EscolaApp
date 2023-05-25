@@ -16,7 +16,7 @@ namespace APIEscola.Repositorio.Repositorios
 
         public async Task<IEnumerable<TurmaModel>> BuscaTurmas()
         {
-            var query = "SELECT * FROM TURMA";
+            var query = "SELECT * FROM turma";
 
             using (_connection)
             {
@@ -26,7 +26,7 @@ namespace APIEscola.Repositorio.Repositorios
 
         public async Task<TurmaModel> BuscaTurmaId(int id)
         {
-            var query = "SELECT * FROM TURMA WHERE ID = @turmaId";
+            var query = "SELECT * FROM turma WHERE id = @turmaId";
             var parameters = new
             {
                 turmaId = id
@@ -42,7 +42,11 @@ namespace APIEscola.Repositorio.Repositorios
         {
             int result;
             var query =
-            @"INSERT INTO TURMA
+            @"INSERT INTO turma (
+            curso_id,
+            turma,
+            ano
+            )
             VALUES
             (
                 @cursoId,
@@ -69,11 +73,11 @@ namespace APIEscola.Repositorio.Repositorios
         {
             int result;
             var query =
-            @"UPDATE ALUNO
+            @"UPDATE turma
             SET
-            CURSO_ID = @cursoId,
-            TURMA = @turma,
-            ANO = @ano
+            curso_id = @cursoId,
+            turma = @turma,
+            ano = @ano
             WHERE ID = @turmaId";
 
             var parameters = new
@@ -95,7 +99,7 @@ namespace APIEscola.Repositorio.Repositorios
         public async Task<bool> ExcluiTurma(int id)
         {
             int result;
-            var query = "DELETE TURMA WHERE ID = @turmaId";
+            var query = "DELETE turma WHERE id = @turmaId";
             var parameters = new { turmaId = id };
 
             using (_connection)
