@@ -16,7 +16,7 @@ namespace APIEscola.Repositorio.Repositorios
 
         public async Task<IEnumerable<AlunoModel>> BuscaAlunos()
         {
-            var query = "SELECT * FROM ALUNO";
+            var query = "SELECT * FROM aluno";
 
             using (_connection)
             {
@@ -26,7 +26,7 @@ namespace APIEscola.Repositorio.Repositorios
 
         public async Task<AlunoModel> BuscaAlunoId(int id)
         {
-            var query = "SELECT * FROM ALUNO WHERE ID = @alunoId";
+            var query = "SELECT * FROM aluno WHERE id = @alunoId";
             var parameters = new
             {
                 alunoId = id
@@ -42,7 +42,11 @@ namespace APIEscola.Repositorio.Repositorios
         {
             int resultado;
             var query =
-            @"INSERT INTO ALUNO
+            @"INSERT INTO aluno (
+            nome,
+            usuario,
+            senha
+            )
             VALUES
             (
                 @nome,
@@ -69,12 +73,12 @@ namespace APIEscola.Repositorio.Repositorios
         {
             int resultado;
             var query =
-            @"UPDATE ALUNO
+            @"UPDATE aluno
             SET
-            NOME = @nome,
-            USUARIO = @usuario,
-            SENHA = @senha
-            WHERE ID = @alunoId";
+            nome = @nome,
+            usuario = @usuario,
+            senha = @senha
+            WHERE id = @alunoId";
 
             var parameters = new
             {
@@ -95,7 +99,7 @@ namespace APIEscola.Repositorio.Repositorios
         public async Task<bool> ExcluiAluno(int id)
         {
             int result;
-            var query = "DELETE ALUNO WHERE ID = @alunoId";
+            var query = "DELETE aluno WHERE id = @alunoId";
             var parameters = new { alunoId = id };
 
             using (_connection)
