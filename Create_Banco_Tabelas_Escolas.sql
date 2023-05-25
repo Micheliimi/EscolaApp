@@ -1,4 +1,8 @@
 
+CREATE DATABASE db_escola
+GO
+USE db_escola
+GO
 CREATE TABLE aluno (
                 id INTEGER PRIMARY KEY NOT NULL,
                 nome VARCHAR(255),
