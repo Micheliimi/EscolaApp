@@ -10,7 +10,7 @@ namespace APIEscola.Model.DTO
         public int TurmaId { get; set; }
         public string? TurmaNome { get; set; }
 
-        public AlunoTurmaModel MapeiaAlunoTurmaModel()
+        public AlunoTurmaModel MapAlunoTurmaModel()
         {
             return new AlunoTurmaModel
             {
