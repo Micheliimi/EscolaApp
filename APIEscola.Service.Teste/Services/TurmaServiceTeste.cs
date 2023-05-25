@@ -14,8 +14,7 @@ namespace APIEscola.Service.Teste.Services
 {
     [TestClass]
     public class TurmaServiceTeste
-    {
-      
+    {    
         private ITurmaService? _service;
         private Mock<IRepositorioTurma>? _repositorio;
 

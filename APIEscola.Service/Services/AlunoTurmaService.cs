@@ -67,7 +67,7 @@ namespace APIEscola.Service.Services
         {
             AlunoTurmaModel alunoTurmaResposta = await _repositorio.BuscaAlunosTurmasId(alunoTurma.AlunoTurmaId);
 
-            return alunoTurmaResposta != null ? false : true;
+            return alunoTurmaResposta != null ? true : false;
         }
     }
 }

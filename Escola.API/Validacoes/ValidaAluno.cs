@@ -3,8 +3,9 @@ using APIEscola.Model.DTO;
 
 namespace Escola.API.Validacoes
 {
-    internal class ValidaAluno : IEndpointFilter
+    public class ValidaAluno : IEndpointFilter
     {
+        public ValidaAluno() { }
         public async ValueTask<object> InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next)
         {
             AlunoDTO aluno = context.GetArgument<AlunoDTO>(0);
@@ -17,7 +18,7 @@ namespace Escola.API.Validacoes
             return await next(context);
         }
 
-        internal string Valida(AlunoDTO aluno)
+        public string Valida(AlunoDTO aluno)
         {
             if (string.IsNullOrEmpty(aluno.Nome))
             {
@@ -31,9 +32,9 @@ namespace Escola.API.Validacoes
             {
                 return "Senha é obrigatória";
             }
-            if (Regex.IsMatch(aluno.Senha, "^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,15}$"))
+            if (!Regex.IsMatch(aluno.Senha, "^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,15}$"))
             {
-                return "Senha precisa fraca, tente outra senha;";
+                return "Senha fraca, tente outra senha";
             }
 
             return string.Empty;
