@@ -18,11 +18,11 @@ namespace APIEscola.Repositorio.Repositorios
         public async Task<IEnumerable<AlunoTurmaModel>> BuscaAlunosTurmas()
         {
             var query =
-                @"SELECT ALUNOTURMA.ID, ALUNOTURMA.ALUNO_ID, ALUNO.NOME, ALUNOTURMA.TURMA_ID, TURMA.NOME FROM ALUNOTURMA
-                INNER JOIN ALUNO
-                ON ALUNOTURMA.ALUNO_ID = ALUNO.ID
+                @"SELECT alunoturma.id, alunoturma.aluno_id, aluno.nome, alunoturma.turma_id, turma.nome FROM alunoturma
+                INNER JOIN aluno
+                ON alunoturma.aluno_id = aluno.id
                 INNER JOIN TURMA
-                ON ALUNOTURMA.TURMA_ID = TURMA.ID";
+                ON alunoturma.turma_id = turma.id";
 
             using (_connection)
             {
@@ -33,12 +33,12 @@ namespace APIEscola.Repositorio.Repositorios
         public async Task<AlunoTurmaModel> BuscaAlunosTurmasId(int alunoTurmaId)
         {
             var query =
-                @"SELECT ALUNOTURMA.ID, ALUNOTURMA.ALUNO_ID, ALUNO.NOME, ALUNOTURMA.TURMA_ID, TURMA.NOME FROM ALUNOTURMA
-                    INNER JOIN ALUNO
-                    ON ALUNOTURMA.ALUNO_ID = ALUNO.ID
+                @"SELECT alunoturma.id, alunoturma.aluno_id, aluno.nome, alunoturma.turma_id, turma.nome FROM alunoturma
+                    INNER JOIN aluno
+                    ON alunoturma.aluno_id = aluno.id
                     INNER JOIN TURMA
-                    ON ALUNOTURMA.TURMA_ID = TURMA.ID
-                WHERE ALUNOTURMA.ID = @id";
+                    ON alunoturma.turma_id = turma.id
+                WHERE alunoturma.id = @id";
 
             var parameters = new
             {
@@ -55,9 +55,9 @@ namespace APIEscola.Repositorio.Repositorios
         {
             int result;
             var query =
-            @"INSERT INTO ALUNOTURMA (
-            ALUNO_ID,
-            TURMA.ID
+            @"INSERT INTO alunoturma (
+            aluno_id,
+            turma_id
             )
             VALUES
             (
@@ -83,10 +83,9 @@ namespace APIEscola.Repositorio.Repositorios
         {
             int result;
             var query =
-            @"UPDATE ALUNOTURMA
-            SET ALUNO_ID = @alunoId,
-            TURMA.ID = @turmaId
-            WHERE ID = @id";
+            @"UPDATE alunoturma
+            SET aluno_id = @alunoId, turma_id = @turmaId
+            WHERE id = @id";
 
             var parameters = new
             {
@@ -106,7 +105,7 @@ namespace APIEscola.Repositorio.Repositorios
         public async Task<bool> ExcluiAlunoTurma(int id)
         {
             int resultado;
-            var query = "DELETE ALUNOTURMA WHERE ID = @id";
+            var query = "DELETE alunoturma WHERE id = @id";
             var parameters = new { id = id };
 
             using (_connection)
