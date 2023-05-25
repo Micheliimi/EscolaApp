@@ -1,0 +1,45 @@
+﻿@model Escola.Web.Models.TurmaViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Excluir Cadastro</h1>
+
+<h3>Deseja realmente excluir o cadastro?</h3>
+<div>
+    <h4>Dados Turma</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CursoId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CursoId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Turma)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Turma)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ano)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ano)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input asp-for="Id" type="hidden" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="List">Voltar</a>
+    </form>
+</div>

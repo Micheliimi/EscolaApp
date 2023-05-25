@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Escola.Web.Models.AlunoTurmaViewModel>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Lista de Alunos e Turmas</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AlunoTurmaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlunoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlunoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TurmaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TurmaNome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlunoTurmaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlunoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlunoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TurmaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TurmaNome)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.AlunoTurmaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.AlunoTurmaId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
