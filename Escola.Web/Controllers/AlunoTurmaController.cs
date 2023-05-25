@@ -9,7 +9,7 @@ namespace Escola.Web.Controllers
     public class AlunoTurmaController : Controller
     {
         #region Propriedades
-        private readonly string _endpoint = "http://localhost:52784/v1/alunoturma/";
+        private readonly string _endpoint = "http://localhost:5206/v1/alunoturma/";
         private readonly HttpClient _httpClient = null;
         #endregion
         #region Construtores

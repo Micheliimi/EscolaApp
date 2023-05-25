@@ -7,7 +7,7 @@ namespace APIEscola.Repositorio.Factory
     {
         public IDbConnection SqlConnection() 
         {
-            return new SqlConnection("Server=localhost:1433;Database=EscolaDb;User Id=sa; Password=yourStrong(!)Password");
+            return new SqlConnection("Data Source=DESKTOP-F91D3M7;Initial Catalog=db_escola;Integrated Security=False");
         }
     }
 }
